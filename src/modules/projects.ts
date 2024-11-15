@@ -1,7 +1,6 @@
 import './projects.css';
-import { mainSection } from '../main';
 
-export const renderProjects = (): void => {
+export const renderProjects = (mainSection:HTMLElement): void => {
     mainSection.innerHTML = '';
     renderPageBackground();
 }

@@ -1,17 +1,17 @@
 import './aboutMe.css';
-import { mainSection } from '../main';
+import { elementCreator } from './elementCreator';
 
 let aboutMeTextContainer:HTMLElement;
 let aboutMeImageContainer:HTMLElement;
 
 
-export const renderAboutMe = (): void => {
+export const renderAboutMe = (mainSection: HTMLElement): void => {
     mainSection.innerHTML = '';
     renderPageBackground();
-    renderAboutMeTextContainer();
+    renderAboutMeTextContainer(mainSection);
     renderPageHeading();
     renderPageTextContent();
-    renderImageContainer();
+    renderImageContainer(mainSection);
     renderProfileImage();
     renderPageButtons();
 }
@@ -22,32 +22,25 @@ const renderPageBackground = (): void => {
     document.body.classList.add('about-me');
 }
 
-const renderAboutMeTextContainer = () => {
-    aboutMeTextContainer = document.createElement('section');
-    aboutMeTextContainer.classList.add('about-me-text-container');
+const renderAboutMeTextContainer = (mainSection:HTMLElement) => {
+    aboutMeTextContainer = elementCreator('section', ['about-me-text-container'], '', '');
     mainSection.appendChild(aboutMeTextContainer);
 }
 
 const renderPageHeading = (): void => {
-    const aboutMeHelloHeading:HTMLHeadingElement = document.createElement('h1');
-    aboutMeHelloHeading.classList.add('about-me-hello-heading')
-    aboutMeHelloHeading.innerHTML = 'Hello,'
+    const aboutMeHelloHeading:HTMLElement = elementCreator('h1', ['about-me-hello-heading'], '', 'Hello,');
     aboutMeTextContainer.appendChild(aboutMeHelloHeading);
 }
 
 const renderPageTextContent = (): void => {
-    const aboutMeFirstTextSection: HTMLHeadingElement = document.createElement('h2');
-    aboutMeFirstTextSection.classList.add('about-me-first-text-section');
-    aboutMeFirstTextSection.innerHTML = "I'm <span id='carl'>Carl</span> and I'm a <span id='frontend-developer'>frontend developer</span>.";
+    const aboutMeFirstTextSection: HTMLElement = elementCreator('h2', ['about-me-first-text-section'], "I'm <span id='carl'>Carl</span> and I'm a <span id='frontend-developer'>frontend developer</span>.", '');
     aboutMeTextContainer.appendChild(aboutMeFirstTextSection);
 
-    const aboutMeSecondTextSection: HTMLHeadingElement = document.createElement('h3');
-    aboutMeSecondTextSection.classList.add('about-me-second-text-section');
-    aboutMeSecondTextSection.innerHTML = "I <span id ='love'>love</span> creating awesome stuff with <span id='javascript'>JavaScript</span>, <span id='css'>CSS</span> & <span id='html'>HTML</span>.";
+    const aboutMeSecondTextSection: HTMLElement = elementCreator('h3', ['about-me-second-text-section'], "I <span id ='love'>love</span> creating awesome stuff with <span id='javascript'>JavaScript</span>, <span id='css'>CSS</span> & <span id='html'>HTML</span>.", '');
     aboutMeTextContainer.appendChild(aboutMeSecondTextSection);
 }
 
-const renderImageContainer = (): void => {
+const renderImageContainer = (mainSection:HTMLElement): void => {
     aboutMeImageContainer = document.createElement('section');
     aboutMeImageContainer.classList.add('about-me-image-container');
     mainSection.appendChild(aboutMeImageContainer);
@@ -67,11 +60,13 @@ const renderPageButtons = () => {
 
     const getInTouchButton: HTMLButtonElement = document.createElement('button');
     getInTouchButton.classList.add('get-in-touch-button');
+    getInTouchButton.setAttribute('aria-label', 'Contact me to get in touch')
     getInTouchButton.innerText = 'Get in touch!';
     buttonsContainer.appendChild(getInTouchButton);
 
     const downloadCVButton:HTMLButtonElement = document.createElement('button');
     downloadCVButton.classList.add('download-cv-button');
+    downloadCVButton.setAttribute('aria-level', 'Download my CV in PDF format');
     downloadCVButton.innerText = 'Download CV';
     buttonsContainer.appendChild(downloadCVButton);
 }
