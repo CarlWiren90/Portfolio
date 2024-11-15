@@ -1,0 +1,28 @@
+:root {
+    --blue: #2A776F;
+    --orange: #D57618;
+    --red: #AB1E24;
+    --white: #FFFADD;
+    --green: #5B7953;
+    --sand: #FFC95E;
+  }
+  
+  @font-face {
+    font-family: 'Altone Trial Bold';
+    src: url('./public/fonts/altone_trial-bold-webfont.woff2') format('woff2'), 
+         url('./public/fonts/altone_trial-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Altone Trial Regular';
+    src: url('./public/fonts/altone_trial-regular-webfont.woff2') format('woff2'), 
+         url('./public/fonts/altone_trial-regular-webfont.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+  }
+
+body.projects {
+    background-image: url('/background-green.png');
+  }
